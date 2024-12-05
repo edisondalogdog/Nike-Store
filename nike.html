@@ -1,0 +1,349 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nike Store</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #1a1a1a;
+            color: #fff;
+        }
+
+        /* Header */
+        header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            background-color: #222;
+            padding: 20px 0;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            z-index: 100;
+        }
+
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        .logo {
+            font-size: 32px;
+            font-weight: bold;
+            color: #e63946;
+            letter-spacing: 2px;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 30px;
+        }
+
+        .nav-links li {
+            list-style: none;
+        }
+
+        .nav-links a {
+            color: #fff;
+            font-size: 18px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #e63946;
+        }
+
+        .search-bar {
+            background-color: #444;
+            padding: 8px 15px;
+            font-size: 16px;
+            color: white;
+            border-radius: 25px;
+            border: none;
+            outline: none;
+        }
+
+        .search-bar:focus {
+            background-color: #e63946;
+            color: #fff;
+        }
+
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: url('https://static.nike.com/a/images/f_auto/dpr_1.0,cs_srgb/w_1824,c_limit/253c1353-6410-476a-92b4-b4a1e0eae13c/12-nike-gift-ideas-for-basketball-players-to-shop-now.jpg') no-repeat center center/cover;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+        }
+
+        .hero .hero-content {
+            position: relative;
+            z-index: 10;
+        }
+
+        .hero h1 {
+            font-size: 70px;
+            font-weight: bold;
+            color: #e63946;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+        }
+
+        .hero p {
+            font-size: 28px;
+            margin-bottom: 30px;
+            color: #fff;
+        }
+
+        .cta-btn {
+            padding: 18px 50px;
+            background-color: #e63946;
+            color: white;
+            font-size: 20px;
+            font-weight: bold;
+            border-radius: 25px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: 0.3s;
+        }
+
+        .cta-btn:hover {
+            background-color: #f1faee;
+            color: #222;
+            transform: scale(1.1);
+        }
+
+        /* Shop Section */
+        .shop {
+            padding: 80px 20px;
+            background-color: #333;
+            text-align: center;
+        }
+
+        .shop h2 {
+            font-size: 50px;
+            color: #fff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .product-gallery {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+            gap: 30px;
+            margin-top: 20px;
+        }
+
+        .product {
+            background-color: #444;
+            padding: 20px;
+            border-radius: 15px;
+            width: 280px; /* Fixed width for better alignment */
+            text-align: center;
+            transition: 0.3s;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .product img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+            border-radius: 10px;
+            transition: 0.3s;
+        }
+
+        .product h3 {
+            font-size: 22px;
+            margin-top: 15px;
+            color: #e63946;
+        }
+
+        .product p {
+            font-size: 18px;
+            color: #f1faee;
+            margin-bottom: 15px;
+        }
+
+        /* Smaller Buy Now Button */
+        .buy-btn {
+            padding: 8px 20px;
+            background-color: #e63946;
+            color: white;
+            font-size: 14px;
+            font-weight: bold;
+            border-radius: 25px;
+            transition: 0.3s;
+            display: inline-block;
+        }
+
+        .buy-btn:hover {
+            background-color: #f1faee;
+            color: #222;
+            transform: scale(1.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #222;
+            color: #fff;
+            padding: 40px 0;
+            text-align: center;
+        }
+
+        footer .footer-links {
+            display: flex;
+            justify-content: center;
+            gap: 30px;
+            margin-bottom: 20px;
+        }
+
+        footer .footer-links a {
+            color: #fff;
+            font-size: 16px;
+            text-transform: uppercase;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        footer .footer-links a:hover {
+            color: #e63946;
+        }
+
+        footer p {
+            font-size: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <nav class="navbar">
+            <div class="logo">Nike Store</div>
+            <ul class="nav-links">
+                <li><a href="#home">Home</a></li>
+                <li><a href="#shop">Shop</a></li>
+                <li><a href="#about">About</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <input type="text" class="search-bar" placeholder="Search products...">
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="hero-content">
+            <h1>Dominate the Game</h1>
+            <p>Elevate your style and performance with Nike gear. For those who dare to be the best.</p>
+            <a href="#shop" class="cta-btn">Shop Now</a>
+        </div>
+    </section>
+
+    <!-- Shop Section -->
+    <section id="shop" class="shop">
+        <h2>Gear Up for Greatness</h2>
+        <div class="product-gallery">
+            <div class="product">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/3903da9b-0b32-447c-aa01-ecf523232458/air-more-uptempo-96-shoes-SHbbBD.png" alt="Nike Shoes">
+                <h3>Nike Air Shoes</h3>
+                <p>$120</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
+            <div class="product">
+                <img src="https://images-na.ssl-images-amazon.com/images/I/411loiA0qEL.jpg" alt="Nike Jacket">
+                <h3>Nike Sports Jacket</h3>
+                <p>$80</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
+            <div class="product">
+                <img src="https://static.nike.com/a/images/t_PDP_1280_v1/f_auto,q_auto:eco/4e8d89e8-233b-4b53-8e64-8b7406d12f30/gym-club-duffel-bag-1d539w.png" alt="Nike Bag">
+                <h3>Nike Training Bag</h3>
+                <p>$60</p>
+                <a href="#" class="buy-btn">Buy Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-links">
+            <a href="#home">Home</a>
+            <a href="#shop">Shop</a>
+            <a href="#about">About</a>
+            <a href="#contact">Contact</a>
+        </div>
+        <p>&copy; 2024 Nike Store. All Rights Reserved.</p>
+    </footer>
+
+</body>
+</html>
+
+<script type="module">
+  import Chatbox from 'https://cdn.jsdelivr.net/npm/@chaindesk/embeds@latest/dist/chatbox/index.js';
+
+  const widget = await Chatbox.initBubble({
+    agentId: 'cm4b9nw3q0lybq30mxmy7yegd',
+    
+    // optional 
+    // If provided will create a contact for the user and link it to the conversation
+    contact: {
+      firstName: 'John',
+      lastName: 'Doe',
+      email: 'customer@email.com',
+      phoneNumber: '+33612345644',
+      userId: '42424242',
+    },
+    // optional
+    // Override initial messages
+    initialMessages: [
+      'Hello Georges how are you doing today?',
+      'How can I help you ?',
+    ],
+    // optional
+    // Provided context will be appended to the Agent system prompt
+    context: "The user you are talking to is John. Start by Greeting him by his name.",
+  });
+
+  // open the chat bubble
+  widget.open();
+
+  // close the chat bubble
+  widget.close()
+
+  // or 
+  widget.toggle()
+</script>
